@@ -1,0 +1,57 @@
+// Todo list using vue.js
+// html part of the Todo List
+<div id="app">
+  <h1>Todo List</h1>
+  <input type="text" v-model="newTodo" v-on:keyup.enter="addTodo">
+  <ul>
+    <li v-for="todo in todos">
+      <input type="checkbox" v-model="todo.done">
+      <span v-bind:class="{ done: todo.done }">{{ todo.text }}</span>
+      <button v-on:click="removeTodo">x</button>
+    </li>
+  </ul>
+</div>
+
+// js part of the Todo List using vue.js
+var app = new Vue({
+  el: '#app',
+  data: {
+    newTodo: '',
+    todos: [
+      { text: 'Learn JavaScript' },
+      { text: 'Learn Vue' },
+      { text: 'Build something awesome' }
+    ]
+  },
+  methods: {
+    addTodo: function () {
+      var text = this.newTodo.trim()
+      if (text) {
+        this.todos.push({ text: text })
+        this.newTodo = ''
+      }
+    },
+    removeTodo: function (index) {
+      this.todos.splice(index, 1)
+    }
+  }
+})
+
+// css part of the Todo List
+.done {
+  text-decoration: line-through;
+}
+
+// Path: index.html
+// Todo list using vue.js
+// html part of the Todo List
+<div id="app">
+  <h1>Todo List</h1>
+  <input type="text" v-model="newTodo" v-on:keyup.enter="addTodo">
+  <ul>
+    <li v-for="todo in todos">
+      <input type="checkbox" v-model="todo.done">
+      <span v-bind:class="{ done: todo.done }">{{ todo.text }}</span>
+      <button v-on:click="removeTodo">x</button>
+    </li>
+  </ul>
